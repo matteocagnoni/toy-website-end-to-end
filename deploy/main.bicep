@@ -127,7 +127,7 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2022-09-01' = {
   kind: 'StorageV2'
   sku: environmentConfigurationMap[environmentType].storageAccount.sku
   properties: {
-    publicNetworkAccess: 'Disabled'
+    publicNetworkAccess: 'Allowed'
   }
   resource blobService 'blobServices' = {
     name: 'default'
