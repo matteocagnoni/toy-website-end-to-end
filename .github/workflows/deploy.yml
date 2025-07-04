@@ -42,6 +42,7 @@ jobs:
        uses: azure/arm-deploy@v1
        name: Run preflight validation
        with:
+         scope: resourcegroup
          deploymentName: ${{ github.run_number }}
          resourceGroupName: ${{ inputs.resourceGroupName }}
          template: ./deploy/main.bicep
@@ -50,12 +51,12 @@ jobs:
            reviewApiUrl=${{ inputs.reviewApiUrl }}
            reviewApiKey=${{ secrets.reviewApiKey }}
            sqlServerAdministratorLogin=${{ inputs.sqlServerAdministratorLogin }}
-           sqlServerAdministratorLoginPassword=${{ secrets.sqlServerAdministratorLoginPassword }}
+           sqlServerAdministratorLoginPassword= ${{ secrets.sqlServerAdministratorLoginPassword }}
          deploymentMode: Validate
      - if: inputs.environmentType == 'Production'
        uses: azure/arm-deploy@v1
-       name: Run what-if
        with:
+         scope: resourcegroup
          failOnStdErr: false
          resourceGroupName: ${{ inputs.resourceGroupName }}
          template: ./deploy/main.bicep
