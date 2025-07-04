@@ -89,11 +89,11 @@ resource appServiceApp 'Microsoft.Web/sites@2022-03-01' = {
         }
         {
           name: 'StorageAccountName'
-          value: storageAccount.name
+          value:  storageAccount.name
         }
         {
           name: 'StorageAccountBlobEndpoint'
-          value: storageAccount.properties.primaryEndpoints.blob
+          value:  storageAccount.properties.primaryEndpoints.blob
         }
         {
           name: 'StorageAccountImagesContainerName'
@@ -126,6 +126,12 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2022-09-01' = {
   location: location
   kind: 'StorageV2'
   sku: environmentConfigurationMap[environmentType].storageAccount.sku
+  properties: {
+    accessTier: 'Hot'
+    isHnsEnabled: true
+    supportsHttpsTrafficOnly: true
+    publicNetworkAccess: 'Disabled'
+  }
   resource blobService 'blobServices' = {
     name: 'default'
 
