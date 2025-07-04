@@ -127,9 +127,6 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2022-09-01' = {
   kind: 'StorageV2'
   sku: environmentConfigurationMap[environmentType].storageAccount.sku
   properties: {
-    accessTier: 'Hot'
-    isHnsEnabled: true
-    supportsHttpsTrafficOnly: true
     publicNetworkAccess: 'Disabled'
   }
   resource blobService 'blobServices' = {
