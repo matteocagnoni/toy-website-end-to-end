@@ -48,12 +48,9 @@ jobs:
          template: ./deploy/main.bicep
          parameters: >
            environmentType=${{ inputs.environmentType }}
-
            reviewApiUrl=${{ inputs.reviewApiUrl }}
            reviewApiKey=${{ secrets.reviewApiKey }}
-
            sqlServerAdministratorLogin=${{ inputs.sqlServerAdministratorLogin }}
-
            sqlServerAdministratorLoginPassword=${{ secrets.sqlServerAdministratorLoginPassword }}
          deploymentMode: Validate
      - if: inputs.environmentType == 'Production'
