@@ -142,13 +142,13 @@ jobs:
         sudo ACCEPT_EULA=Y apt-get install -y mssql-tools unixodbc-dev
         echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> $GITHUB_ENV
   
-    - uses: azure/sql-action@v2.1
+    - uses: azure/sql-action@v2.2.1
       name: Deploy DACPAC to database
       with:
         #server-name: ${{ needs.deploy.outputs.sqlServerFullyQualifiedDomainName }}
         connection-string: ${{ format('Server=tcp:{0},1433;Initial Catalog={1};User Id={2};Password={3};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30', needs.deploy.outputs.sqlServerFullyQualifiedDomainName, needs.deploy.outputs.sqlDatabaseName, inputs.sqlServerAdministratorLogin, secrets.sqlServerAdministratorLoginPassword) }}
         #dacpac-package: database/ToyCompany.Database.dacpac
-        path: 'ToyCompany.Database.dacpac'
+        path: './ToyCompany.Database.dacpac'
         action: 'Publish'
 
 
