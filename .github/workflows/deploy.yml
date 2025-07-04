@@ -91,16 +91,17 @@ jobs:
       id: deploy
       name: Deploy Bicep file
       with:
+        scope: resourcegroup
         failOnStdErr: false
         deploymentName: ${{ github.run_number }}
         resourceGroupName: ${{ inputs.resourceGroupName }}
         template: ./deploy/main.bicep
         parameters: >
-           environmentType=${{ inputs.environmentType }}
-           reviewApiUrl=${{ inputs.reviewApiUrl }}
-           reviewApiKey=${{ secrets.reviewApiKey }}
-           sqlServerAdministratorLogin=${{ inputs.sqlServerAdministratorLogin }}
-           sqlServerAdministratorLoginPassword=${{ secrets.sqlServerAdministratorLoginPassword }}
+           environmentType=   ${{ inputs.environmentType }}
+           reviewApiUrl=   ${{ inputs.reviewApiUrl }}
+           reviewApiKey=   ${{ secrets.reviewApiKey }}
+           sqlServerAdministratorLogin=   ${{ inputs.sqlServerAdministratorLogin }}
+           sqlServerAdministratorLoginPassword=   ${{ secrets.sqlServerAdministratorLoginPassword }}
 
   deploy-website:
     needs: deploy
