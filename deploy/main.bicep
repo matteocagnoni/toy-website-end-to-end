@@ -184,8 +184,8 @@ resource sqlServerFirewallRule 'Microsoft.Sql/servers/firewallRules@2022-05-01-p
   parent: sqlServer
   name: 'AllowAllWindowsAzureIps'
   properties: {
-    endIpAddress: '0.0.0.0'
-    startIpAddress: '255.255.255.255'
+    endIpAddress: '255.255.255.255'
+    startIpAddress: '0.0.0.0'
   }
 }
 
